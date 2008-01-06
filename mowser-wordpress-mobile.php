@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: Mowser Plugin
+Plugin Name: Mowser Wordpress Mobile
 Plugin URI: http://pub.mowser.com/wiki/Main/WordPressPlugin
 Description: This plugin will detect mobile phones, and redirect to Mowser.com. 
-Version: 1.3
-Author: Russell Beattie, info@mowser.com
+Version: 2.0
+Author: Mike Rowehl
 Author URI: http://www.mowser.com
 */
 
-/*  Copyright 2007 Russell Beattie (email : info@mowser.com)
+/*  Copyright 2007 Mike Rowehl (email : info@mowser.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,15 +26,23 @@ Author URI: http://www.mowser.com
  */
 
 
-function mowser_headers() {
-	echo "\n" . '<link rel="alternate" type="text/html" media="handheld" href="http://m.mowser.com/web/' . urlencode($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']) . '" title="Mobile/PDA" />' . "\n";
-
-	$admobid = get_option('mowser_admobid');
-	if ($admobid !== false) {
-		echo '<meta scheme="admob" name="siteid" content="' . $admobid . '" />' . "\n";
-	}
+function mowser_mobile_url() {
+    $alt_base = get_option('mowser_alternatebaseurl');
+    if ( $alt_base && !empty($alt_base) ) {
+        return 'http://' . $alt_base . $_SERVER['REQUEST_URI'];
+    }
+    return 'http://m.mowser.com/web/' . urlencode($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 }
 
+
+function mowser_headers() {
+	echo "\n\n<!-- Added by Mowser Wordpress Mobile -->\n" . '<link rel="alternate" type="text/html" media="handheld" href="' . mowser_mobile_url() . '" title="Mobile/PDA" />' . "\n";
+
+	$admobid = get_option('mowser_admobid');
+	if ( ($admobid !== false) && !empty($admobid) ) {
+		echo '<meta scheme="admob" name="siteid" content="' . $admobid . '" />' . "\n";
+    }
+}
 
 
 function mowser_redirect() {
@@ -96,7 +104,7 @@ function mowser_redirect() {
 	 // PHP Code to redirect to Mowser: 
 
 	if($isMobile){
-	   header('Location: http://m.mowser.com/web/' . urlencode($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']));
+	   header('Location: ' . mowser_mobile_url());
 	   exit();
 	}
 
@@ -113,6 +121,7 @@ function mowser_admin() {
 function mowser_admin_page() {
 	if (isset($_POST['mowser_options_submit'])) {
 		update_option('mowser_admobid', $_POST['mowser_admobid']);
+		update_option('mowser_alternatebaseurl', $_POST['mowser_alternatebaseurl']);
 		echo '<div id="message" class="updated fade"><p><strong>';
 		_e('Options saved.');
 		echo '</strong></p></div>';
@@ -123,14 +132,20 @@ function mowser_admin_page() {
 		$admob_id = '';
 	}
 
+	$altbaseurl = get_option('mowser_alternatebaseurl');
+	if ($altbaseurl === false) {
+		$altbaseurl = '';
+	}
 ?>
 	<div class="wrap">
 	<h2>Mowser Options Page</h2>
 
 	<form name="mowser_options_form" action="<?php echo $_SERVER['PHP_SELF'] . '?page=' . basename(__FILE__); ?>" method="post">
 	<ul style="width:75%">
-	<li><strong>AdMob Site ID</strong>: <input type="text" name="mowser_admobid" id="mowser_admobid" value="<?php echo $admobid;?>" /><br />
-	You can get an AdMob site ID by registering for free at <a href="http://www.admob.com">AdMob</a> and configuring a site.</li>
+	<li><strong>AdMob Site ID</strong>: <input type="text" name="mowser_admobid" id="mowser_admobid" value="<?php echo $admobid;?>" /> (optional)<br />
+    You can get an AdMob site ID by registering for free at <a href="http://www.admob.com">AdMob</a> and configuring a site.</li>
+    <li><strong>Mobile Domain Name</strong>: <input type="text" name="mowser_alternatebaseurl" value="<?php echo $altbaseurl;?>" /> (optional)<br />
+    If you have Mowser configured to use a mobile specific domain for your site you can enter that here and the plugin will use that instead of m.mowser.com when constructing mobile links local to your site.</li>
 	</ul>
 	<div class="submit" style="float:right">
 	<input type="submit" name="mowser_options_submit" value="<?php _e('Update Options &raquo;') ?>"/>
