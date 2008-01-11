@@ -3,7 +3,7 @@
 Plugin Name: Mowser Wordpress Mobile
 Plugin URI: http://pub.mowser.com/wiki/Main/WordPressPlugin
 Description: This plugin will detect mobile phones, and redirect to Mowser.com. 
-Version: 2.0
+Version: 2.1
 Author: Mike Rowehl
 Author URI: http://www.mowser.com
 */
@@ -41,6 +41,11 @@ function mowser_headers() {
 	$admobid = get_option('mowser_admobid');
 	if ( ($admobid !== false) && !empty($admobid) ) {
 		echo '<meta scheme="admob" name="siteid" content="' . $admobid . '" />' . "\n";
+    }
+
+    $mobilecss = get_option('mowser_mobilecss');
+    if ( ($mobilecss !== false) && !empty($mobilecss) ) {
+        echo '<link rel="stylesheet" type="text/css" media="handheld" href="' . $mobilecss . '" />' . "\n";
     }
 }
 
@@ -119,9 +124,13 @@ function mowser_admin() {
 
 
 function mowser_admin_page() {
+    $default_mobilecss = 'http://pub.mowser.com/media/stylesheets/wordpress.css';
+
 	if (isset($_POST['mowser_options_submit'])) {
 		update_option('mowser_admobid', $_POST['mowser_admobid']);
 		update_option('mowser_alternatebaseurl', $_POST['mowser_alternatebaseurl']);
+        update_option('mowser_mobilecss', $_POST['mowser_mobilecss']);
+
 		echo '<div id="message" class="updated fade"><p><strong>';
 		_e('Options saved.');
 		echo '</strong></p></div>';
@@ -135,6 +144,11 @@ function mowser_admin_page() {
 	$altbaseurl = get_option('mowser_alternatebaseurl');
 	if ($altbaseurl === false) {
 		$altbaseurl = '';
+    }
+
+	$mobilecss = get_option('mowser_mobilecss');
+	if ($mobilecss === false) {
+		$mobilecss = $default_mobilecss;
 	}
 ?>
 	<div class="wrap">
@@ -146,6 +160,8 @@ function mowser_admin_page() {
     You can get an AdMob site ID by registering for free at <a href="http://www.admob.com">AdMob</a> and configuring a site.</li>
     <li><strong>Mobile Domain Name</strong>: <input type="text" name="mowser_alternatebaseurl" value="<?php echo $altbaseurl;?>" /> (optional)<br />
     If you have Mowser configured to use a mobile specific domain for your site you can enter that here and the plugin will use that instead of m.mowser.com when constructing mobile links local to your site.</li>
+    <li><strong>Handheld Stylesheet</strong>: <input type="text" name="mowser_mobilecss" value="<?php echo $mobilecss;?>" /> (optional)<br />
+    Handheld stylesheet to include when displaying the mobile version of your blog.  We have a default version hosted at <?php echo $default_mobilecss; ?> which you can either use as is, or copy locally and modify to suit your preferences..</li>
 	</ul>
 	<div class="submit" style="float:right">
 	<input type="submit" name="mowser_options_submit" value="<?php _e('Update Options &raquo;') ?>"/>

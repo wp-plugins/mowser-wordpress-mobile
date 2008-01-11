@@ -3,14 +3,14 @@ Contributors: mikerowehl
 Tags: mobile, xhtml, cellphone, handset, mowser
 Requires at least: 2.0.2
 Tested up to: 2.3.2
-Stable tag: 2.0
+Stable tag: 2.1
 
 This plugin will detect mobile phones, and redirect to Mowser.com to display a mobile optimized version of the page.
 
 == Description ==
 
 Mowser (http://mowser.com) includes a service that allows publishers to display
-their existing web content to user on mobile phones and other handheld 
+their existing web content to users on mobile phones and other handheld 
 devices.  This plugin detects when a user is on a mobile phone and 
 automatically redirects them to the Mowser optimized version of the page they
 were trying to access.
@@ -42,6 +42,10 @@ The Mowser site will detect if you're using Google AdSense on your existing
 site and swap to Google AdSense for Mobile automatically.  It also supports
 using advertising from AdMob on the mobile pages.
 
+== Frequently Asked Questions ==
+
+= How do I configure custom advertising for my mobile version? =
+
 If you would like to add AdMob advertisements to the mobile version of your
 pages all you have to do is add your AdMob Site ID on the Mowser Options page
 (located under the "Options" tab in the administrative area of your blog).  If
@@ -51,14 +55,28 @@ Site ID off the My Sites page and paste it into the field on the Mowser
 settings page.  You blog will now include an extra meta header that tells 
 Mowser what Site ID to use.
 
-All the advertising revenue is yours to keep!
+= How can I configure my own hostname to use for the mobile adapted version? =
 
 If you would like to setup a domain to serve your mobile content you can follow
 the instructions here:
 
 http://pub.mowser.com/wiki/Main/DomainRedirect
 
-Mowser will then use the m.* host from your domain to serve mobile content.
-If you would like to also have the plugin to your mobile domain for both
-redirecting users and writing the alternate handheld header into your HTML 
-pages simply enter the domain on the Mowser options page.
+Mowser will then use the mobile specific host from your domain to serve mobile
+content.
+
+If you would also like to have the Wordpress plugin use your own custom mobile
+specific domain when creating URLs you can enter it as the 'Mobile Domain Name'
+on the options page.
+
+= How can I improve the look of the adapted version of my blog? =
+
+Mowser provides a default handheld stylesheet that you can include in your 
+blog to make the display a bit nicer.  The default version is at:
+
+http://pub.mowser.com/media/stylesheets/wordpress.css
+
+You can copy that file to your own server and change it to suit your needs.  
+Use the 'Handheld Stylesheet' field on the options menu to point to our version
+or your customized version and Mowser will include the formatting when
+displaying your adapted pages.
