@@ -44,7 +44,10 @@ function mowser_headers() {
     }
 
     $mobilecss = get_option('mowser_mobilecss');
-    if ( ($mobilecss !== false) && !empty($mobilecss) ) {
+    if ( $mobilecss === false ) {
+        $mobilecss = mowser_default_mobilecss();
+    }
+    if ( !empty($mobilecss) ) {
         echo '<link rel="stylesheet" type="text/css" media="handheld" href="' . $mobilecss . '" />' . "\n";
     }
 }
@@ -122,10 +125,11 @@ function mowser_admin() {
 	}
 }
 
+function mowser_default_mobilecss() {
+    return 'http://pub.mowser.com/media/stylesheets/wordpress.css';
+}
 
 function mowser_admin_page() {
-    $default_mobilecss = 'http://pub.mowser.com/media/stylesheets/wordpress.css';
-
 	if (isset($_POST['mowser_options_submit'])) {
 		update_option('mowser_admobid', $_POST['mowser_admobid']);
 		update_option('mowser_alternatebaseurl', $_POST['mowser_alternatebaseurl']);
@@ -148,8 +152,8 @@ function mowser_admin_page() {
 
 	$mobilecss = get_option('mowser_mobilecss');
 	if ($mobilecss === false) {
-		$mobilecss = $default_mobilecss;
-	}
+		$mobilecss = mowser_default_mobilecss();
+    }
 ?>
 	<div class="wrap">
 	<h2>Mowser Options Page</h2>
@@ -161,7 +165,7 @@ function mowser_admin_page() {
     <li><strong>Mobile Domain Name</strong>: <input type="text" name="mowser_alternatebaseurl" value="<?php echo $altbaseurl;?>" /> (optional)<br />
     If you have Mowser configured to use a mobile specific domain for your site you can enter that here and the plugin will use that instead of m.mowser.com when constructing mobile links local to your site.</li>
     <li><strong>Handheld Stylesheet</strong>: <input type="text" name="mowser_mobilecss" value="<?php echo $mobilecss;?>" /> (optional)<br />
-    Handheld stylesheet to include when displaying the mobile version of your blog.  We have a default version hosted at <?php echo $default_mobilecss; ?> which you can either use as is, or copy locally and modify to suit your preferences..</li>
+    Handheld stylesheet to include when displaying the mobile version of your blog.  We have a default version hosted at <?php echo mowser_default_mobilecss(); ?> which you can either use as is, or copy locally and modify to suit your preferences..</li>
 	</ul>
 	<div class="submit" style="float:right">
 	<input type="submit" name="mowser_options_submit" value="<?php _e('Update Options &raquo;') ?>"/>

@@ -1,9 +1,9 @@
 === Mowser Wordpress Mobile ===
 Contributors: mikerowehl
-Tags: mobile, xhtml, cellphone, handset, mowser
+Tags: mobile, formatting, xhtml, cellphone, handset, mowser, phone, pda
 Requires at least: 2.0.2
 Tested up to: 2.3.2
-Stable tag: 2.1
+Stable tag: 2.2
 
 This plugin will detect mobile phones, and redirect to Mowser.com to display a mobile optimized version of the page.
 
