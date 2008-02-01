@@ -3,7 +3,7 @@
 Plugin Name: Mowser Wordpress Mobile
 Plugin URI: http://pub.mowser.com/wiki/Main/WordPressPlugin
 Description: This plugin will detect mobile phones, and redirect to Mowser.com. 
-Version: 2.1
+Version: 2.3
 Author: Mike Rowehl
 Author URI: http://www.mowser.com
 */
