@@ -3,7 +3,7 @@
 Plugin Name: Mowser Wordpress Mobile
 Plugin URI: http://pub.mowser.com/wiki/Main/WordPressPlugin
 Description: This plugin will detect mobile phones, and redirect to Mowser.com. 
-Version: 2.3
+Version: 2.4
 Author: Mike Rowehl
 Author URI: http://www.mowser.com
 */
@@ -165,7 +165,7 @@ function mowser_admin_page() {
     <li><strong>Mobile Domain Name</strong>: <input type="text" name="mowser_alternatebaseurl" value="<?php echo $altbaseurl;?>" /> (optional)<br />
     If you have Mowser configured to use a mobile specific domain for your site you can enter that here and the plugin will use that instead of m.mowser.com when constructing mobile links local to your site.</li>
     <li><strong>Handheld Stylesheet</strong>: <input type="text" name="mowser_mobilecss" value="<?php echo $mobilecss;?>" /> (optional)<br />
-    Handheld stylesheet to include when displaying the mobile version of your blog.  We have a default version hosted at <?php echo mowser_default_mobilecss(); ?> which you can either use as is, or copy locally and modify to suit your preferences..</li>
+    Handheld stylesheet to include when displaying the mobile version of your blog.  We have a default version hosted at <?php echo mowser_default_mobilecss(); ?> which you can either use as is, or copy locally and modify to suit your preferences. Visit the <a href="http://pub.mowser.com/wiki/Main/WordPressPlugin">Mowser publisher wiki</a> for handheld stylesheets for other Wordpress themes.</li>
 	</ul>
 	<div class="submit" style="float:right">
 	<input type="submit" name="mowser_options_submit" value="<?php _e('Update Options &raquo;') ?>"/>

@@ -1,9 +1,9 @@
 === Mowser Wordpress Mobile ===
 Contributors: mikerowehl
-Tags: mobile, formatting, xhtml, cellphone, handset, mowser, phone, pda
+Tags: mobile, formatting, xhtml, cellphone, handset, mowser, phone, pda, stylesheet, handheld
 Requires at least: 2.0.2
 Tested up to: 2.3.2
-Stable tag: 2.3
+Stable tag: 2.4
 
 This plugin will detect mobile phones, and redirect to Mowser.com to display a mobile optimized version of the page.
 
@@ -41,6 +41,11 @@ http://www.operamini.com/demo/
 The Mowser site will detect if you're using Google AdSense on your existing
 site and swap to Google AdSense for Mobile automatically.  It also supports
 using advertising from AdMob on the mobile pages.
+
+You can find a selection of handheld stylesheets for wordpress themes at the
+Mowser publisher wiki:
+
+http://pub.mowser.com/wiki/Main/WordPressPlugin
 
 == Frequently Asked Questions ==
 
@@ -80,3 +85,12 @@ You can copy that file to your own server and change it to suit your needs.
 Use the 'Handheld Stylesheet' field on the options menu to point to our version
 or your customized version and Mowser will include the formatting when
 displaying your adapted pages.
+
+Mowser also provides a set of stylesheets that work with different Wordpress
+themes at:
+
+http://pub.mowser.com/wiki/Main/WordPressPlugin
+
+If you create a custom handheld stylesheet for a theme that isn't listed on
+that page please add it or notify the plugin maintainer at miker at mowser dot
+com.  Thanks!
