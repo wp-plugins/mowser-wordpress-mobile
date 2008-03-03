@@ -1,9 +1,9 @@
 === Mowser Wordpress Mobile ===
 Contributors: mikerowehl
-Tags: mobile, formatting, xhtml, cellphone, handset, mowser, phone, pda, stylesheet, handheld
+Tags: mobile, formatting, xhtml, cellphone, handset, mowser, phone, pda, stylesheet, handheld, widget
 Requires at least: 2.0.2
-Tested up to: 2.3.2
-Stable tag: 2.4
+Tested up to: 2.3.3
+Stable tag: 2.5
 
 This plugin will detect mobile phones, and redirect to Mowser.com to display a mobile optimized version of the page.
 
@@ -21,6 +21,12 @@ information about how to add mobile advertising.  For more information about
 the headers that Mowser uses see:
 
 http://pub.mowser.com/wiki/Main/HeadersOverview
+
+Once the plugin is installed, and if you're using a recent version of Wordpress
+that support widgets, you can add a Mowser button to your sidebar using the
+Widgets tab under the Presentation heading.  Drag the Mowser Widget box to the
+sidebar area on that page to add the widget, and click "Save Changes" to make
+it active.
 
 == Installation ==
 
@@ -46,6 +52,10 @@ You can find a selection of handheld stylesheets for wordpress themes at the
 Mowser publisher wiki:
 
 http://pub.mowser.com/wiki/Main/WordPressPlugin
+
+If you use Widgets to configure your sidebar you can use the Mowser Widget
+to promote your mobile version.  Once you have the Mowser plugin enabled just
+drag the widget into your sidebar and save the changes.
 
 == Frequently Asked Questions ==
 
