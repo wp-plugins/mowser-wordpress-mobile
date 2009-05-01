@@ -3,7 +3,7 @@ Contributors: mikerowehl
 Tags: mobile, formatting, xhtml, cellphone, handset, mowser, phone, pda, stylesheet, handheld, widget, dotmobi
 Requires at least: 2.0.2
 Tested up to: 2.3.3
-Stable tag: 2.5
+Stable tag: 2.6
 
 This plugin is now deprecated, please check out the new mobile wordpress plugin
 at http://wordpress.org/extend/plugins/wordpress-mobile-pack/
